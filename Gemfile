@@ -13,6 +13,8 @@ gem 'foreman'
 gem 'thin'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
+gem 'resources_id_replace'
+
 group :development, :test do
   gem 'sqlite3'
 
