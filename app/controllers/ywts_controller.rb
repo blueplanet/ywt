@@ -1,0 +1,2 @@
+class YwtsController < ApplicationController
+end

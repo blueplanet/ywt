@@ -1,0 +1,20 @@
+doctype
+html
+  head
+    title
+      | YWT
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  body
+    .container
+      nav.navbar.navbar-default role="navigation"
+        .navbar-header
+          .navbar-brand ボイジャー第10期
+        .collapse.navbar-collapse.navbar-ex1-collapse
+          .navbar-right
+            a.btn.btn-sm.btn-primary.navbar-btn type="button" 保存
+            a.btn.btn-sm.btn-danger.navbar-btn type="button" 削除
+            a.btn.btn-sm.btn-success.navbar-btn type="button" ページ新規
+
+      = yield
