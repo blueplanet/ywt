@@ -1,0 +1,12 @@
+.col-lg-6.col-lg-offset-3
+  .panel.panel-info
+    .panel-heading YWTページ新規
+    .panel-body
+      = form_for @page, html: {class: 'form-horizontal'} do |f|
+        .form-group
+          = f.label :title, "タイトル", class: "col-lg-2 control-label"
+          .col-lg-10
+            = f.text_field :title, class: 'form-control'
+        .form-gorup
+          .col-lg-10.col-lg-offset-2
+            = f.submit '作成', class: "btn btn-primary"

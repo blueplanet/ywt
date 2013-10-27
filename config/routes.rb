@@ -1,7 +1,7 @@
 Ywt::Application.routes.draw do
   get "top/welcome"
 
-  resource :page, replace_id_with: 'token', only: [:show] do
+  resources :pages, replace_id_with: 'token', only: [:new, :create, :show] do
     resources :ywt_items, only: [:create, :update, :destroy]
   end
 

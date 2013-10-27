@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20131027065204) do
 
   create_table "pages", force: true do |t|
     t.string   "title"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
