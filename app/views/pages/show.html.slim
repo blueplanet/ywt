@@ -3,8 +3,8 @@ nav.navbar.navbar-default role="navigation"
     .navbar-brand= @page.title
   .collapse.navbar-collapse.navbar-ex1-collapse
     .navbar-right
-      a.btn.btn-sm.btn-danger.navbar-btn type="button" 削除
-      a.btn.btn-sm.btn-success.navbar-btn type="button" ページ新規
+      = link_to "削除", page_path(@page, token: @page.token), method: :delete, class: "btn btn-sm btn-danger navbar-btn", data: {confirm: 'ページとすべてのYWTを全部なくなります。本当にページを削除しますか？'}
+      = link_to "ページ新規", new_page_path, class: "btn btn-sm btn-success navbar-btn"
 
 .row
   .col-lg-4
