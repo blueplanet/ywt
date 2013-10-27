@@ -8,49 +8,14 @@ nav.navbar.navbar-default role="navigation"
 
 .row
   .col-lg-4
-    #y.panel.panel-info
-      .panel-heading 
-        |やったこと
-        span.label.label-warning.pull-right= @page.dids.size
-      .panel-footer
-        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
-          .input-group
-            = f.hidden_field :item_type, value: "y"
-            = f.text_field :body, placeholder: "何をやったか？", class: "form-control"
-            span.input-group-btn
-              = f.submit "追加", class: "btn btn-info"
-      ul.list-group
-        - @page.dids.each do |did|
-          li.list-group-item= did.body
-
+    = render "ywts", page: @page, ywts: @page.dids, 
+                     id: "dids", caption: "やったこと", placeholder: "何をやったか？", 
+                     item_type: "y", class_name: "info"
   .col-lg-4
-    #w.panel.panel-success
-      .panel-heading 
-        |分かったこと
-        span.label.label-warning.pull-right= @page.saweds.size
-      .panel-footer
-        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
-          .input-group
-            = f.hidden_field :item_type, value: "w"
-            = f.text_field :body, placeholder: "何を分かったか？", class: "form-control"
-            span.input-group-btn
-              = f.submit "追加", class: "btn btn-success"
-      ul.list-group
-        - @page.saweds.each do |sawed|
-          li.list-group-item= sawed.body
-        
+    = render "ywts", page: @page, ywts: @page.saweds, 
+                     id: "saweds", caption: "分かったこと", placeholder: "何を分かったか？", 
+                     item_type: "w", class_name: "success"
   .col-lg-4
-    #t.panel.panel-primary
-      .panel-heading 
-        |試したいこと
-        span.label.label-warning.pull-right= @page.tries.size
-      .panel-footer
-        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
-          .input-group
-            = f.hidden_field :item_type, value: "t"
-            = f.text_field :body, placeholder: "何を試したいか？", class: "form-control"
-            span.input-group-btn
-              = f.submit "追加", class: "btn btn-primary"
-      ul.list-group
-        - @page.tries.each do |try|
-          li.list-group-item= try.body
+    = render "ywts", page: @page, ywts: @page.tries, 
+                     id: "tries", caption: "試したいこと", placeholder: "何を試したいか？", 
+                     item_type: "t", class_name: "primary"
