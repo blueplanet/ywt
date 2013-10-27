@@ -13,11 +13,12 @@ nav.navbar.navbar-default role="navigation"
         |やったこと
         span.label.label-warning.pull-right= @page.dids.size
       .panel-footer
-        form
+        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
           .input-group
-            input.form-control placeholder="何をやったか？"
+            = f.hidden_field :item_type, value: "y"
+            = f.text_field :body, placeholder: "何をやったか？", class: "form-control"
             span.input-group-btn
-              button.btn.btn-info type="submit" 追加
+              = f.submit "追加", class: "btn btn-info"
       ul.list-group
         - @page.dids.each do |did|
           li.list-group-item= did.body
@@ -28,11 +29,12 @@ nav.navbar.navbar-default role="navigation"
         |分かったこと
         span.label.label-warning.pull-right= @page.saweds.size
       .panel-footer
-        form
+        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
           .input-group
-            input.form-control placeholder="何を分かったか？"
+            = f.hidden_field :item_type, value: "w"
+            = f.text_field :body, placeholder: "何を分かったか？", class: "form-control"
             span.input-group-btn
-              button.btn.btn-success type="submit" 追加
+              = f.submit "追加", class: "btn btn-success"
       ul.list-group
         - @page.saweds.each do |sawed|
           li.list-group-item= sawed.body
@@ -43,12 +45,12 @@ nav.navbar.navbar-default role="navigation"
         |試したいこと
         span.label.label-warning.pull-right= @page.tries.size
       .panel-footer
-        form
+        = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
           .input-group
-            input.form-control placeholder="何を試したか？"
+            = f.hidden_field :item_type, value: "t"
+            = f.text_field :body, placeholder: "何を試したいか？", class: "form-control"
             span.input-group-btn
-              button.btn.btn-primary did
-
+              = f.submit "追加", class: "btn btn-primary"
       ul.list-group
         - @page.tries.each do |try|
           li.list-group-item= try.body
