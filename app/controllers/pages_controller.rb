@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new page_params
     if @page.save
-      redirect_to @page
+      redirect_to page_path(@page, token: @page.token)
     else
       render :new
     end
