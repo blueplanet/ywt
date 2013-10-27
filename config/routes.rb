@@ -1,3 +1,9 @@
 Ywt::Application.routes.draw do
-  root to: "ywts#index"
+  get "top/welcome"
+
+  resource :page, replace_id_with: 'token', only: [:show] do
+    resources :ywt_items, only: [:create, :update, :destroy]
+  end
+
+  root to: 'top#welcome'
 end
