@@ -11,7 +11,7 @@ nav.navbar.navbar-default role="navigation"
     #y.panel.panel-info
       .panel-heading 
         |やったこと
-        span.label.label-warning.pull-right 3
+        span.label.label-warning.pull-right= @page.dids.size
       .panel-footer
         form
           .input-group
@@ -19,30 +19,36 @@ nav.navbar.navbar-default role="navigation"
             span.input-group-btn
               button.btn.btn-info type="submit" 追加
       ul.list-group
-        li.list-group-item SublimeText プラグインを作ってみた 
-        li.list-group-item 受託開発を始めてみた長文字テストです。長すぎるとどうなりますか？
-        li.list-group-item Rails
+        - @page.dids.each do |did|
+          li.list-group-item= did.body
 
   .col-lg-4
     #w.panel.panel-success
       .panel-heading 
         |分かったこと
-        span.label.label-warning.pull-right 3
+        span.label.label-warning.pull-right= @page.saweds.size
       .panel-footer
         form
           .input-group
             input.form-control placeholder="何を分かったか？"
             span.input-group-btn
               button.btn.btn-success type="submit" 追加
+      ul.list-group
+        - @page.saweds.each do |sawed|
+          li.list-group-item= sawed.body
         
   .col-lg-4
     #t.panel.panel-primary
       .panel-heading 
         |試したいこと
-        span.label.label-warning.pull-right 3
+        span.label.label-warning.pull-right= @page.tries.size
       .panel-footer
         form
           .input-group
             input.form-control placeholder="何を試したか？"
             span.input-group-btn
-              button.btn.btn-primary type="submit" 追加
+              button.btn.btn-primary did
+
+      ul.list-group
+        - @page.tries.each do |try|
+          li.list-group-item= try.body

@@ -23,6 +23,7 @@ end
 
 group :development do
   gem 'guard-livereload'
+  gem 'pry-rails'
 end
 
 group :production do
