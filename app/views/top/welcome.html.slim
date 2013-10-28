@@ -1,3 +1,22 @@
-h1 YWT
-
-= link_to "ページを新規", new_page_path, class: "btn btn-lg btn-success"
+.row
+  .col-lg-8
+    .jumbotron
+      h1 YWTとは
+      p
+        ul
+          li 「Y」は、やったこと
+          li 「W」は、分かったこと
+          li 「T」は、試したいこと
+      p
+        = link_to "ページを新規", new_page_path, class: "btn btn-lg btn-success"
+  .col-lg-4
+    .panel.panel-info
+      .panel-heading 
+        |統計情報
+      ul.list-group
+        li.list-group-item
+          span.badge= Page.all.count
+          |ページ数
+        li.list-group-item
+          span.badge= YwtItem.all.count
+          |YWT項目数
