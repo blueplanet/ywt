@@ -1,0 +1,21 @@
+nav.navbar.navbar-default role="navigation"
+  .navbar-header
+    .navbar-brand= @page.title
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    .navbar-right
+      = link_to "削除", page_path(@page, token: @page.token), method: :delete, class: "btn btn-sm btn-danger navbar-btn", data: {confirm: 'ページとすべてのYWTを全部なくなります。本当にページを削除しますか？'}
+      = link_to "ページ新規", new_page_path, class: "btn btn-sm btn-success navbar-btn"
+
+.row
+  .col-lg-4
+    = render "ywts", page: @page, ywts: @page.dids, 
+                     id: "dids", caption: "やったこと", placeholder: "何をやったか？", 
+                     item_type: "y", class_name: "info"
+  .col-lg-4
+    = render "ywts", page: @page, ywts: @page.saweds, 
+                     id: "saweds", caption: "分かったこと", placeholder: "何を分かったか？", 
+                     item_type: "w", class_name: "success"
+  .col-lg-4
+    = render "ywts", page: @page, ywts: @page.tries, 
+                     id: "tries", caption: "試したいこと", placeholder: "何を試したいか？", 
+                     item_type: "t", class_name: "warning"

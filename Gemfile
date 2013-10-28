@@ -21,6 +21,11 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'guard-livereload'
+  gem 'pry-rails'
+end
+
 group :production do
   gem 'pg'
 end

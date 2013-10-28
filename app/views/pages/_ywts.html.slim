@@ -1,0 +1,18 @@
+div id="#{id}" class="panel panel-#{class_name}"
+  .panel-heading 
+    = caption
+    span.label.label-warning.pull-right= ywts.size
+  .panel-footer
+    = form_for [@page, YwtItem.new], url: page_ywt_items_path(@page.token), method: :post  do |f|
+      .input-group
+        = f.hidden_field :item_type, value: item_type
+        = f.text_field :body, placeholder: "#{placeholder}", class: "form-control"
+        span.input-group-btn
+          = f.submit "追加", class: "btn btn-primary"
+  ul.list-group
+    - ywts.each do |ywt|
+      li.list-group-item
+        = link_to page_ywt_item_path(page.token, ywt), method: :delete
+          .glyphicon.glyphicon-remove-circle
+        '
+        = ywt.body
